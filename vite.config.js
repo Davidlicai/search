@@ -4,12 +4,9 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
-    target: 'es2020',  // 兼容 Node 20
-    minify: 'terser'
-  },
-  optimizeDeps: {
-    esbuildOptions: {
-      target: 'es2020'
+    target: 'es2022',  // 适配Node 20
+    commonjsOptions: {
+      include: [/node_modules/]
     }
   }
 })
