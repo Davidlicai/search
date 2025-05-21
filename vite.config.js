@@ -1,12 +1,19 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src')
+    }
+  },
   build: {
-    target: 'es2022',  // 适配Node 20
-    commonjsOptions: {
-      include: [/node_modules/]
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html')
+      }
     }
   }
 })
