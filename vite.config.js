@@ -1,11 +1,15 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { resolve } from 'path'
 
 export default defineConfig({
+  plugins: [react()],
+  build: {
+    target: 'es2020',  // 兼容 Node 20
+    minify: 'terser'
+  },
   optimizeDeps: {
     esbuildOptions: {
-      target: 'es2020' // 兼容Node 20
+      target: 'es2020'
     }
   }
 })
